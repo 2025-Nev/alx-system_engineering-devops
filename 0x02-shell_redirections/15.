@@ -1,0 +1,2 @@
+#!/bin/bash Count that word
+grep bin /etc/passwd | wc -l Count that word
