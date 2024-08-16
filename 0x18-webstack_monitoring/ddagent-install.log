@@ -1,6 +1,7 @@
 [34m
-* Datadog Agent 7 install script v1.33.0
+* Datadog Agent install script v1.13.0.deprecated
 [0m
+[33mWarning: DD_AGENT_MAJOR_VERSION not set. Installing Datadog Agent version 6 by default.[0m
 [34m
 * Installing apt-transport-https, curl and gnupg
 [0m
@@ -11,12 +12,16 @@ Hit http://archive.ubuntu.com trusty-backports InRelease
 Hit http://archive.ubuntu.com trusty Release.gpg
 Hit http://archive.ubuntu.com trusty Release
 Hit http://security.ubuntu.com trusty-security/main amd64 Packages
+Get:1 https://apt.datadoghq.com stable InRelease
+Ign https://apt.datadoghq.com stable InRelease
 Hit http://security.ubuntu.com trusty-security/restricted amd64 Packages
-Hit http://archive.ubuntu.com trusty-updates/main amd64 Packages
-Hit http://archive.ubuntu.com trusty-updates/restricted amd64 Packages
+Hit https://apt.datadoghq.com stable Release.gpg
+Hit https://apt.datadoghq.com stable Release
 Hit http://security.ubuntu.com trusty-security/universe amd64 Packages
-Hit http://archive.ubuntu.com trusty-updates/universe amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/main amd64 Packages
 Hit http://security.ubuntu.com trusty-security/multiverse amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/restricted amd64 Packages
+Hit http://archive.ubuntu.com trusty-updates/universe amd64 Packages
 Hit http://archive.ubuntu.com trusty-updates/multiverse amd64 Packages
 Hit http://archive.ubuntu.com trusty-backports/main amd64 Packages
 Hit http://archive.ubuntu.com trusty-backports/restricted amd64 Packages
@@ -25,16 +30,12 @@ Hit http://archive.ubuntu.com trusty-backports/multiverse amd64 Packages
 Hit http://archive.ubuntu.com trusty/main amd64 Packages
 Hit http://archive.ubuntu.com trusty/restricted amd64 Packages
 Hit http://archive.ubuntu.com trusty/universe amd64 Packages
-Get:1 https://apt.datadoghq.com stable InRelease
-Ign https://apt.datadoghq.com stable InRelease
 Hit http://archive.ubuntu.com trusty/multiverse amd64 Packages
-Hit https://apt.datadoghq.com stable Release.gpg
-Hit https://apt.datadoghq.com stable Release
-Get:2 https://esm.ubuntu.com trusty-infra-security InRelease
-Get:3 https://esm.ubuntu.com trusty-infra-updates InRelease
+Hit https://esm.ubuntu.com trusty-infra-security InRelease
+Hit https://esm.ubuntu.com trusty-infra-updates InRelease
 Hit https://esm.ubuntu.com trusty-infra-security/main amd64 Packages
 Hit https://esm.ubuntu.com trusty-infra-updates/main amd64 Packages
-Fetched 93.4 kB in 16s (5764 B/s)
+Fetched 78.4 kB in 16s (4668 B/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -46,26 +47,33 @@ gnupg is already the newest version.
 [34m
 * Installing APT package sources for Datadog
 [0m
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1713  100  1713    0     0  17008      0 --:--:-- --:--:-- --:--:-- 17130
 gpg: key C0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
-gpg: key 06462314: "Datadog, Inc. APT key (2024-05-15) (APT key) <package+aptkey@datadoghq.com>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
-gpg: key C0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6226  100  6226    0     0  62181      0 --:--:-- --:--:-- --:--:-- 62260
 gpg: key F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  9001  100  9001    0     0  84223      0 --:--:-- --:--:-- --:--:--  439k
 gpg: key 382E94DE: "Datadog, Inc <package@datadoghq.com>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
+[34m
+* Installing the Datadog Agent package
+[0m
 Get:1 https://apt.datadoghq.com stable InRelease
 Ign https://apt.datadoghq.com stable InRelease
 Hit https://apt.datadoghq.com stable Release.gpg
 Hit https://apt.datadoghq.com stable Release
-Hit https://apt.datadoghq.com stable/7 amd64 Packages
+Get:2 https://apt.datadoghq.com stable/6 amd64 Packages
+Fetched 36.6 kB in 1s (36.5 kB/s)
 Reading package lists...
   [33mInstalling package(s): datadog-agent datadog-signing-keys
 [0m
