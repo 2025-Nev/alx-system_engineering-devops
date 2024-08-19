@@ -1,25 +1,7 @@
 #!/usr/bin/env bash
-# Script to configure Nginx to listen on port 80
-
-# Install Nginx if not installed
-if ! command -v nginx &> /dev/null
-then
-    apt-get update
-    apt-get install -y nginx
-fi
-
-# Ensure Nginx is listening on port 80
-sed -i 's/listen 80 default_server;/listen 80 default_server;/' /etc/nginx/sites-available/default
-sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:80 default_server;/' /etc/nginx/sites-available/default
-
-# Restart Nginx to apply changes
-service nginx restart
-
-# Check if Nginx is running and listening on port 80
-curl -s http://0:80 > /dev/null
-
-if [ $? -eq 0 ]; then
-    echo "Nginx is successfully configured and listening on port 80."
-else
-    echo "Nginx is not properly configured."
-fi
+# debugging nginx port 80
+# How I solved it: delete the existing ../sites-enabled/default and replace it with a copy of
+# ../sites-available/default. You do that by creating a symbolic link. 
+# NB: The flag -s creates a symbolic link, -f deletes the existing file and replaces it
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
