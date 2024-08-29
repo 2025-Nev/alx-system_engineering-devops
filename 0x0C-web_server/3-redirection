@@ -1,25 +1,19 @@
 #!/usr/bin/env bash
-# Configures Nginx server for redirection
+# Script that configures a new Ubuntu machine to respect above requirements
 
-# Install Nginx if not already installed
-apt-get update
-apt-get install -y nginx
+# Update and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-# Create a simple HTML file
-echo "Hello World!" > /var/www/html/index.html
+# Create Hello World page
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Configure Nginx for redirection
-config_file="/etc/nginx/sites-available/default"
-redirect_url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-
-# Use sed to add the redirection configuration
-sed -i '/server_name _;/a \
-    location /redirect_me { \
-        return 301 '"$redirect_url"'; \
-    }' "$config_file"
+# Configure redirection
+redirect_config="server_name _;\n\tlocation /redirect_me {\n\t\treturn 301 https://nevnow.tech;\n\t}"
+sudo sed -i "s|server_name _;|$redirect_config|" /etc/nginx/sites-available/default
 
 # Test Nginx configuration
-nginx -t
+sudo nginx -t
 
 # Restart Nginx
-service nginx restart
+sudo service nginx restart
