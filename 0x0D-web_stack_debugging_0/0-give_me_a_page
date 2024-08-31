@@ -1,6 +1,4 @@
-docker exec -it 3b553be37a99 /bin/bash
-apt-get update
-apt-get install -y apache2
+#!/usr/bin/env bash
+# starting the apache server
+
 service apache2 start
-echo "Hello Holberton" > /var/www/html/index.html
-exit
